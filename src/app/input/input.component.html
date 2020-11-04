@@ -1,0 +1,81 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 6px 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
+
+<div style="background-color: rgba(135, 207, 235, 0.459) ">
+    <h1 style="text-align: center;"> Todo App</h1>
+    <div style="max-width: 900px; margin: auto; margin-top: 40px; border: 3px solid brown; background-color: rgba(255, 228, 196, 0.788); padding: 50px; text-align: center; box-shadow: 5px 10px;">
+        <table style="width: 100%;">
+            <th>
+                <label style="font-family: cursive; font-size: 20px;">Enter your todo : </label>
+                <input type="text" name="tod" [(ngModel)]="tod" style="border-radius: 4px; height: 20px;">
+            </th>
+            <th>
+                <label style="font-family: cursive; font-size: 20px;">Enter todo description : </label>
+                <input type="text" name="des" [(ngModel)] = "des" style="border-radius: 4px; height: 20px;">
+            </th>
+        </table>
+        <br><br>
+        <table style="width: 90%;">
+            <th>
+                <label style="font-family: cursive; font-size: 20px;">Enter todo date : </label>
+                <input type="date" name="dat" [(ngModel)] = "dat" style="border-radius: 4px; height: 20px;">
+            </th>
+        </table><br><br>
+        <table style="width: 90%; margin-left: 20px;">
+            <th>
+                <button style="width: 80%; height: 30px; border-radius: 4px; box-shadow: black; font-size: 20px; font-family: cursive; background-color: chocolate;" (click)="AddTodo(tod,des,dat)" type="submit">Submit</button>
+            </th>
+        </table>
+        <br>
+        <table style="width: 90%; margin-left: 20px; ">
+            <th>
+                <button style="width: 80%; height: 30px; height: 30px; border-radius: 4px; box-shadow: black; font-size: 20px; font-family: cursive; background-color: chocolate;" [routerLink] = "'/about'" type="submit">About Page</button>
+            </th>
+        </table>
+    </div>
+    <!-- <app-display [todo]="todoList"></app-display> -->
+    <div style="max-width: 900px; margin: auto;padding: 30px; ">
+        <h2 style="font-family: cursive;">TODO Items</h2>
+        <h3>Quantity : {{todoList.length}}</h3>
+    
+    <table style="text-align: left; width: 100%; background-color: aquamarine; padding: 20px; box-shadow: 5px 10px;">
+        <h2 *ngIf="todoList.length==0" style="font-family: cursive;">List is empty</h2>
+      <div style="border: 3px solid #318a82e3; padding: 10px; margin: 10px; box-shadow: 5px 10px;" *ngFor = "let item of todoList">
+        <tr>
+            <td style="width: 90%;"><b>Todo</b> : {{item.t}}</td>
+            <td >
+                <button class="btn" style="margin-left: 30px; margin-top: 10px; margin-right: 90px;"  type="submit" (click)= "deleteTodo(item.t)">
+                    <i class="fa fa-trash">_Delete</i></button>
+                    <!-- <button class="btn"><i class="fa fa-trash"></i></button> -->
+                </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Todo description</b> : {{item.description}}
+            </td>
+            <td>
+                <b>Date</b> : {{item.date}}
+            </td>
+        </tr>
+        <br>
+      </div>
+    </table>
+    </div>
+    
+</div>

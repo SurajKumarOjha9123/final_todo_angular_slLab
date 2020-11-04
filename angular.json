@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "todoey-angular"
+    }
+  },
+  "defaultProject": "todoey-angular",
+  "cli": {
+    "analytics": false
+  }
 }
